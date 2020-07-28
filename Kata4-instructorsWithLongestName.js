@@ -22,18 +22,33 @@ Expected Output
 {name: "Domascus", course: "Web"}
 */
 
+const instructorWithLongestName = function (instructors) {
+  // let longestName = instructors[0].name.length;
+  // let name = '';
+  // for(let i = 1; i < instructors.length; i++) {
+  //   if(instructors[i].name.length > longestName) {
+  //     longestName = instructors[i].name.length; //?
+  //     name = instructors[i].name; //?
+  //     course = instructors[i].course;
+  //   }
 
-const instructorWithLongestName = function(instructors) {
-  let longestName = instructors[0].name.length; 
-  let name = '';
-  for(let i = 1; i < instructors.length; i++) {
-    if(instructors[i].name.length > longestName) {
-      longestName = instructors[i].name.length; //?
-      name = instructors[i].name; //?
-      course = instructors[i].course;
+  // }
+  // return { 'name': name, 'course': course};
+
+  //using reduce
+  return instructors.reduce((longest, current) => {
+    if (current.name.length > longest.name.length) {
+      longest.name = current.name;
+      longest.course = current.course;
     }
-    
-  }
-  return { 'name': name, 'course': course};
+    return longest;
+  });
 };
 
+console.log(
+  instructorWithLongestName([
+    { name: 'Matthew', course: 'Web' },
+    { name: 'David', course: 'iOS' },
+    { name: 'Domascus', course: 'Web' }
+  ])
+);
